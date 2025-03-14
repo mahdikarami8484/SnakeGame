@@ -1,7 +1,8 @@
-class Game_view : public View 
+#include "include/views/gameview.h"
+
+class GameView : public View 
 {
     private:
-
         Console* console;
 
         std::chrono::steady_clock::time_point lastMoveTime;
@@ -89,7 +90,7 @@ class Game_view : public View
 
         int score = 0;
 
-        Game_view(Console* console){
+        void Game_view(Console* console){
             this->console = console;
 
             lastMoveTime = std::chrono::steady_clock::now();
