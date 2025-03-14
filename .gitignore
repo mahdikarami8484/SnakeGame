@@ -30,3 +30,24 @@
 *.exe
 *.out
 *.app
+
+# Visual Studio temporary files
+.vscode/
+*.sdf
+*.suo
+*.VC.db
+*.VC.opendb
+ipch/
+*.obj
+*.pch
+*.idb
+*.ilk
+*.log
+*.tlog
+*.pdb
+*.user
+
+# Visual Studio user settings
+*.sln
+*.vcxproj
+*.vcxproj.*
