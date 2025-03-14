@@ -1,3 +1,5 @@
+// To do: add game over view 
+
 #include <windows.h>
 #include <iostream>
 #include <map>
@@ -6,6 +8,7 @@
 #include <chrono>
 #include <random>
 #include <ctime>
+#include <cmath>
 
 // Default colors
 #define DEFAULT_BACKGROUND_COLOR Console::Colors::BLACK
@@ -217,6 +220,9 @@ class Game_view
 
         Console* console;
 
+        std::chrono::steady_clock::time_point lastMoveTime;
+        const int moveDelay = 200;
+
         void ground()
         {   
             std::string ground_char = "#";
@@ -277,21 +283,14 @@ class Game_view
     public:
         struct Player {
             COORD pos;
+            COORD last_pos;
             COORD direction;
             COORD max_pos;
             COORD min_pos;
-            std::string skin;
+            std::string skin = "o";
         };
 
-        Player player = {
-            { static_cast<SHORT>(0), static_cast<SHORT>(0)},
-            {static_cast<SHORT>(1), static_cast<SHORT>(0)},
-            { static_cast<SHORT>(0), static_cast<SHORT>(0)},
-            { static_cast<SHORT>( 2 ), static_cast<SHORT>( 2 )},
-            "o"
-        };
-
-        //Player player_body[256];
+        std::vector<Player> player;
 
         struct Food {
             COORD pos;
@@ -309,16 +308,24 @@ class Game_view
 
         Game_view(Console* console){
             this->console = console;
-            // (this->console->info.size.X - 1) / 2 
-            player.pos = { 
-                static_cast<SHORT>( (this->console->info.size.X - 1) / 2  ), 
-                static_cast<SHORT>( (this->console->info.size.Y - 1) / 2  )
-            };
 
-            player.max_pos = { 
-                static_cast<SHORT>( (this->console->info.size.X - 2) ), 
-                static_cast<SHORT>( (this->console->info.size.Y - 2) )
-            };
+            lastMoveTime = std::chrono::steady_clock::now();
+
+            player.push_back(
+                {
+                    { 
+                        static_cast<SHORT>( (this->console->info.size.X - 1) / 2  ), 
+                        static_cast<SHORT>( (this->console->info.size.Y - 1) / 2  )
+                    },
+                    { static_cast<SHORT>(0), static_cast<SHORT>(0) },
+                    { static_cast<SHORT>(1), static_cast<SHORT>(0) },
+                    { 
+                        static_cast<SHORT>( (this->console->info.size.X - 2) ), 
+                        static_cast<SHORT>( (this->console->info.size.Y - 2) )
+                    },
+                    { static_cast<SHORT>( 2 ), static_cast<SHORT>( 2 )},
+                }
+            );
         }
 
         void draw()
@@ -326,19 +333,21 @@ class Game_view
             this->ground();
             this->draw_player();
             this->draw_food();
-            //this->draw_player_body();
         }
 
         void draw_player()
         {
-            console->write(
-                this->player.skin,
-                Console::Colors::GREEN,
-                DEFAULT_BACKGROUND_COLOR,
-                Console::Text_Attr::NORMAL,
-                false,
-                { static_cast<SHORT>(player.pos.X), static_cast<SHORT>(player.pos.Y) }
-            );
+            for (size_t i = 0; i < player.size(); i++)
+            {
+                console->write(
+                    this->player[0].skin,
+                    Console::Colors::GREEN,
+                    DEFAULT_BACKGROUND_COLOR,
+                    Console::Text_Attr::NORMAL,
+                    false,
+                    { static_cast<SHORT>(player[i].pos.X), static_cast<SHORT>(player[i].pos.Y) }
+                ); 
+            }
         }
 
         void draw_food()
@@ -351,102 +360,133 @@ class Game_view
                 false,
                 { static_cast<SHORT>(food.pos.X), static_cast<SHORT>(food.pos.Y) }
             );
+            console->write(
+                this->food.skin,
+                Console::Colors::MAGENTA,
+                DEFAULT_BACKGROUND_COLOR,
+                Console::Text_Attr::NORMAL,
+                false,
+                { static_cast<SHORT>(food.pos.X+1), static_cast<SHORT>(food.pos.Y) }
+            );
+            console->write(
+                this->food.skin,
+                Console::Colors::MAGENTA,
+                DEFAULT_BACKGROUND_COLOR,
+                Console::Text_Attr::NORMAL,
+                false,
+                { static_cast<SHORT>(food.pos.X+1), static_cast<SHORT>(food.pos.Y+1) }
+            );
+            console->write(
+                this->food.skin,
+                Console::Colors::MAGENTA,
+                DEFAULT_BACKGROUND_COLOR,
+                Console::Text_Attr::NORMAL,
+                false,
+                { static_cast<SHORT>(food.pos.X), static_cast<SHORT>(food.pos.Y+1) }
+            );
         }
-
-        // void draw_player_body()
-        // {
-        //     for (int i = 0; i < 256; i++) {
-        //         if (player_body[i].skin.empty()) continue;
-        //         console->write(
-        //             this->player_body[i].skin,
-        //             Console::Colors::GREEN,
-        //             DEFAULT_BACKGROUND_COLOR,
-        //             Console::Text_Attr::NORMAL,
-        //             false,
-        //             { static_cast<SHORT>(this->player_body[i].pos.X), static_cast<SHORT>(this->player_body[i].pos.Y) }
-        //         );
-        //     }
-        // }
 
         void spawn_food()
         {
             if(food.spawned) return;
-            food.pos.X = this->random(player.min_pos.X + 1, player.max_pos.X - 1);
-            food.pos.Y = this->random(player.min_pos.Y + 1, player.max_pos.Y - 1);
+            food.pos.X = this->random(player[0].min_pos.X + 1, player[0].max_pos.X - 2);
+            food.pos.Y = this->random(player[0].min_pos.Y + 1, player[0].max_pos.Y - 2);
             food.spawned = true;
+        }
+
+        void add_body()
+        {
+            player.push_back(
+                {
+                    { 
+                        static_cast<SHORT>(player.back().last_pos.X), 
+                        static_cast<SHORT>(player.back().last_pos.Y)
+                    },
+                    { static_cast<SHORT>(0), static_cast<SHORT>(0) },
+                    { static_cast<SHORT>(0), static_cast<SHORT>(0) },
+                    { 
+                        static_cast<SHORT>( (this->console->info.size.X - 2) ), 
+                        static_cast<SHORT>( (this->console->info.size.Y - 2) )
+                    },
+                    { static_cast<SHORT>( 2 ), static_cast<SHORT>( 2 )},
+                }
+            );
         }
 
         void move_player()
         {
-            if( 
-                player.pos.X >= (player.max_pos.X) ||
-                player.pos.X <= (player.min_pos.X) ||
-                player.pos.Y >= (player.max_pos.Y) ||
-                player.pos.Y <= (player.min_pos.Y)
-            ) return;
-
+           
+            auto now = std::chrono::steady_clock::now();
+            auto elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(now - lastMoveTime).count();
+            
             if(
-                player.pos.X == food.pos.X &&
-                player.pos.Y == food.pos.Y
+                std::abs(player[0].pos.X - food.pos.X) < 2 &&
+                std::abs(player[0].pos.Y - food.pos.Y) < 2
             ) this->eat_food();
 
-            player.pos.X += player.direction.X;
-            player.pos.Y += player.direction.Y;
+            if (elapsed < moveDelay)
+                return;
+
+            lastMoveTime = now;
+
+            if( 
+                player[0].pos.X >= (player[0].max_pos.X) ||
+                player[0].pos.X <= (player[0].min_pos.X) ||
+                player[0].pos.Y >= (player[0].max_pos.Y) ||
+                player[0].pos.Y <= (player[0].min_pos.Y)
+            ) return;
+
+            player[0].pos.X += player[0].direction.X;
+            player[0].pos.Y += player[0].direction.Y;
+
+            for (size_t i = 0; i < player.size(); i++) 
+            {
+                player[i].last_pos = player[i].pos;
+
+                if(i == 0)
+                {
+                    player[i].pos.X += player[i].direction.X;
+                    player[i].pos.Y += player[i].direction.Y;
+                    continue;
+                }
+
+                player[i].pos = player[i-1].last_pos;  
+            }
         }
 
         void eat_food()
         {
             this->food.spawned = false;
-            // player_body[score] = {
-            //     {
-            //         static_cast<SHORT>(player.direction.X),
-            //         static_cast<SHORT>(player.direction.Y),  
-            //     },
-            //     {
-            //         static_cast<SHORT>(player.pos.X - player.direction.X),
-            //         static_cast<SHORT>(player.pos.Y - player.direction.Y),
-            //     },
-            //     {
-            //         static_cast<SHORT>(player.max_pos.X),
-            //         static_cast<SHORT>(player.max_pos.Y),
-            //     },
-            //     {
-            //         static_cast<SHORT>(player.min_pos.X),
-            //         static_cast<SHORT>(player.min_pos.Y),
-            //     },
-            //     player.skin
-            // };
-
             this->score++;
+            this->add_body();
         }
 
         void handle_keys()
         {
             if((GetAsyncKeyState(VK_DOWN) & 0x8000))
             {
-                player.direction.Y = 1;
-                player.direction.X = 0;
+                player[0].direction.Y = 1;
+                player[0].direction.X = 0;
             }
 
             if((GetAsyncKeyState(VK_UP) & 0x8000))
             {
-                player.direction.Y = -1;
-                player.direction.X = 0;
+                player[0].direction.Y = -1;
+                player[0].direction.X = 0;
             }
 
             
             if((GetAsyncKeyState(VK_RIGHT) & 0x8000))
             {
-                player.direction.Y = 0;
-                player.direction.X = 1;
+                player[0].direction.Y = 0;
+                player[0].direction.X = 1;
             }
 
             if((GetAsyncKeyState(VK_LEFT) & 0x8000))
             {
-                player.direction.Y = 0;
-                player.direction.X = -1;
+                player[0].direction.Y = 0;
+                player[0].direction.X = -1;
             }
-            
         }
 };
 
@@ -456,7 +496,7 @@ std::map<int, std::string> views = {
 };
 
 // fps 
-const int targetFPS = 10;
+const int targetFPS = 20;
 const int frameDelay = 1000 / targetFPS;
 
 int main()
