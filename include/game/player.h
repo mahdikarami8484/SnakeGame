@@ -1,7 +1,7 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-#include "core/Object.h"
+#include "include/game/object.h"
 #include <vector>
 
 class Player : public Object
@@ -33,7 +33,6 @@ class Player : public Object
         void erase() override;
         void move() override;
         void handler_keys() override;
-
 };
 
 #endif

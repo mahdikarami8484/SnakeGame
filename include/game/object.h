@@ -1,11 +1,11 @@
 #ifndef OBJECT_H
 #define OBJECT_H
 
-#include <windows.h>
 #include <iostream>
-#include "Config.h"
-#include "Console.h"
-#include "Point.h"
+#include <windows.h>
+#include "include/core/point.h"
+#include "include/core/config.h"
+#include "include/core/console.h"
 
 class Object 
 {
