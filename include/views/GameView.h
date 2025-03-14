@@ -1,9 +1,11 @@
 #ifndef GAME_VIEW_H
 #define GAME_VIEW_H
 
-#include "core/View.h"
+#include "include/core/view.h"
 #include <chrono>
 #include <ctime>
+#include <random>
+#include <string>
 
 class GameView : public View 
 {
@@ -95,7 +97,7 @@ class GameView : public View
 
         int score = 0;
 
-        Game_view(Console* console){
+        void Game_view(Console* console){
             this->console = console;
 
             lastMoveTime = std::chrono::steady_clock::now();
@@ -133,6 +135,7 @@ class GameView : public View
 
         void draw_score()
         {
+
             std::string score = "  Score: " + std::to_string(this->score)+"  ";
             console->write(
                     score,
