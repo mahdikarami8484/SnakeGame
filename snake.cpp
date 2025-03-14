@@ -9,7 +9,6 @@
 #include <chrono>
 #include <random>
 #include <ctime>
-#include <cmath>
 
 // Default colors
 #define DEFAULT_BACKGROUND_COLOR Console::Colors::BLACK
