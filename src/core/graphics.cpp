@@ -10,11 +10,10 @@ struct ScreenInfo {
 
 ScreenInfo GetScreenInfo(HANDLE output)
 {
-    HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
     CONSOLE_SCREEN_BUFFER_INFO csbi;
     ScreenInfo information;
 
-    if (GetConsoleScreenBufferInfo(handle, &csbi)) {
+    if (GetConsoleScreenBufferInfo(output, &csbi)) {
         int width = csbi.srWindow.Right - csbi.srWindow.Left + 1;
         int height = csbi.srWindow.Bottom - csbi.srWindow.Top + 1;    
         information = {static_cast<SHORT>(width), static_cast<SHORT>(height), csbi}; 
@@ -29,8 +28,8 @@ void Graphics::SetForeground(Color const &color) {
     WORD attributes = GetScreenInfo(output).csbi.wAttributes;
     WORD value = static_cast<WORD>(color);
 
-    attributes &= (~0b1111);
-    attributes |= value;
+    attributes &= (0xFFF0);
+    attributes |= value & 0x000F;
 
     SetConsoleTextAttribute(output, attributes);
 }
@@ -39,10 +38,10 @@ void Graphics::SetBackground(const Graphics::Color &color) {
     HANDLE output = GetStdHandle(STD_OUTPUT_HANDLE);
 
     WORD attributes = GetScreenInfo(output).csbi.wAttributes;
-    WORD value = static_cast<WORD>(color) << 4;
+    WORD value = static_cast<WORD>(color);
 
-    attributes &= (0b1111);
-    attributes |= value;
+    attributes &= (0xFF0F);
+    attributes |= (value & 0x000F) << 4;
 
     SetConsoleTextAttribute(output, attributes);
 }

@@ -5,21 +5,21 @@
 
 namespace Graphics {
     enum class Color {
-        Black       = 0x0000,
-        Gray        = 0x0008,
-        Red         = 0x0004,
-        Green       = 0x0002,
-        Blue        = 0x0001,
-        Cyan            = Green | Blue,
-        Yellow          = Green | Red,
-        Magenta         = Blue | Red,
-        BrightRed       = Red | Gray,
-        BrightCyan      = Cyan | Gray,
-        BrightBlue      = Blue | Gray,
-        BrightGreen     = Green | Gray,
-        BrightYellow    = Yellow | Gray,
-        BrightMagenta   = Magenta | Gray,
-        White           = Red | Green | Blue
+        Black,
+        Blue,
+        Green,
+        Cyan,
+        Red,
+        Magneta,
+        Yellow,
+        White,
+        Gray,
+        BrightBlue,
+        BrightGreen,
+        BrightCyan,
+        BrightRed,
+        BrightMagenta,
+        BrightYellow
     };
 
     class Property {
