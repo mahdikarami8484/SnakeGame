@@ -47,14 +47,9 @@ void Graphics::SetBackground(const Graphics::Color &color) {
     SetConsoleTextAttribute(output, attributes);
 }
 
-void Graphics::SetTextAttribute(TextAttribute const &attribute) {
-    HANDLE output = GetStdHandle(STD_OUTPUT_HANDLE);
-}
-
 void Graphics::SetProperty(Property const &property) {
     SetForeground(property.foreground);
     SetBackground(property.background);
-    SetTextAttribute(property.attribute);
 }
 
 void Graphics::Draw(std::string const &text, Property const &property) {
