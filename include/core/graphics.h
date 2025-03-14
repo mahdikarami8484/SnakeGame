@@ -4,6 +4,12 @@
 #include "point.h"
 
 namespace Graphics {
+    class Property {
+    public:
+        Color foreground = Color::White;
+        Color background = Color::Black;
+    };
+
     enum class Color {
         Black,
         Blue,
@@ -22,17 +28,15 @@ namespace Graphics {
         BrightYellow
     };
 
-    class Property {
-    public:
-        Color foreground = Color::White;
-        Color background = Color::Black;
-    };
-
     void EraseConsole();
 
+    Color GetForeground();
     void SetForeground(Color const &color);
+
+    Color GetBackground();
     void SetBackground(Color const &color);
 
+    Property GetProperty();
     void SetProperty(Property const &property);
 
     void MoveCursor(Point const &point);

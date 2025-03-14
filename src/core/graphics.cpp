@@ -22,26 +22,34 @@ ScreenInfo GetScreenInfo(HANDLE output)
     return information;
 }
 
+Graphics::Color Graphics::GetForeground()
+{
+    ScreenInfo info = GetScreenInfo(GetStdHandle(STD_OUTPUT_HANDLE));
+    return static_cast<Color>(info.csbi.wAttributes & 0x000F);
+}
 void Graphics::SetForeground(Color const &color) {
     HANDLE output = GetStdHandle(STD_OUTPUT_HANDLE);
-
     WORD attributes = GetScreenInfo(output).csbi.wAttributes;
-    WORD value = static_cast<WORD>(color);
 
     attributes &= (0xFFF0);
-    attributes |= value & 0x000F;
+    attributes |= static_cast<WORD>(color) & 0x000F;
 
     SetConsoleTextAttribute(output, attributes);
 }
 
-void Graphics::SetBackground(const Graphics::Color &color) {
-    HANDLE output = GetStdHandle(STD_OUTPUT_HANDLE);
 
+Graphics::Color Graphics::GetBackground()
+{
+    ScreenInfo info = GetScreenInfo(GetStdHandle(STD_OUTPUT_HANDLE));
+    return static_cast<Color>(info.csbi.wAttributes & 0x00F0);
+}
+void Graphics::SetBackground(const Graphics::Color &color)
+{
+    HANDLE output = GetStdHandle(STD_OUTPUT_HANDLE);
     WORD attributes = GetScreenInfo(output).csbi.wAttributes;
-    WORD value = static_cast<WORD>(color);
 
     attributes &= (0xFF0F);
-    attributes |= (value & 0x000F) << 4;
+    attributes |= (static_cast<WORD>(color) & 0x000F) << 4;
 
     SetConsoleTextAttribute(output, attributes);
 }
@@ -51,16 +59,21 @@ void Graphics::SetProperty(Property const &property) {
     SetBackground(property.background);
 }
 
+Graphics::Property Graphics::GetProperty()
+{
+    Property result;
+    result.foreground = GetForeground();
+    result.background = GetBackground();
+    return result;
+}
+
 void Graphics::Draw(std::string const &text, Property const &property) {
     using namespace std;
 
-    // Updates the color of the terminal.
     SetProperty(property);
 
-    // Prints the string.
     cout << text;
 
-    // Resets the property
     SetProperty(Property());
 }
 
