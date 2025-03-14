@@ -25,21 +25,30 @@ ScreenInfo GetScreenInfo(HANDLE output)
 
 void Graphics::SetForeground(Color const &color) {
     HANDLE output = GetStdHandle(STD_OUTPUT_HANDLE);
-    ScreenInfo info = GetScreenInfo(output);
 
+    WORD attributes = GetScreenInfo(output).csbi.wAttributes;
     WORD value = static_cast<WORD>(color);
-    WORD attributes = info.csbi.wAttributes;
-    SetConsoleTextAttribute(output, info.csbi.wAttributes);
+
+    attributes &= (~0b1111);
+    attributes |= value;
+
+    SetConsoleTextAttribute(output, attributes);
 }
 
 void Graphics::SetBackground(const Graphics::Color &color) {
     HANDLE output = GetStdHandle(STD_OUTPUT_HANDLE);
+
+    WORD attributes = GetScreenInfo(output).csbi.wAttributes;
     WORD value = static_cast<WORD>(color) << 4;
-    SetConsoleTextAttribute(output, value);
+
+    attributes &= (0b1111);
+    attributes |= value;
+
+    SetConsoleTextAttribute(output, attributes);
 }
 
 void Graphics::SetTextAttribute(TextAttribute const &attribute) {
-        HANDLE output = GetStdHandle(STD_OUTPUT_HANDLE);
+    HANDLE output = GetStdHandle(STD_OUTPUT_HANDLE);
 }
 
 void Graphics::SetProperty(Property const &property) {
