@@ -26,13 +26,14 @@ Note: This program is only compatible with Windows because it uses the `Windows.
 - Fixed issue with time frame and image jumping (**TODO: Need to resolve the time frame and image jumping problem completely**).
 
 ## How to Compile and Run
-1. Download and install MSYS2 from [official website](www.msys2.org).
-2. Open MSYS2 terminal (MSYS MinGW 64-bit or MSYS2 MinGW 32-bit).
-3. Update the package manager:
+1. Make sure you are on a Windows machine.
+2. Download and install MSYS2 from [official website](www.msys2.org).
+3. Open MSYS2 terminal (MSYS MinGW 64-bit or MSYS2 MinGW 32-bit).
+4. Update the package manager:
 ```
 pacman -Syu
 ```
-4. Install **make**
+5. Install **make**
 - For 64-bit:
 ```
 pacman -S mingw-w64-x86_64-make
@@ -41,17 +42,17 @@ pacman -S mingw-w64-x86_64-make
 ```
 pacman -S mingw-w64-i686-make
 ```
-5. Check the installation:
+6. Check the installation:
 ```
 make --version
 ```
-6. Now in the project directory, simply execute:
+7. Now in the project directory, simply execute:
 ```
 make
 ```
-7. Execute **snake.exe**
+8. Execute **snake.exe**
 
-**Bear in mind that this program needs to be executed directly through Command Prompt (cmd.exe). It might not work properly in other environments.**
+**Note**: Bear in mind that this program needs to be executed directly through Command Prompt (cmd.exe). It might not work properly in other environments.
 
 ## Contribution
 If you have any suggestions or improvements, feel free to submit a pull request (PR).
