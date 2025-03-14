@@ -3,9 +3,7 @@
 
 #include <iostream>
 #include <windows.h>
-#include "include/core/point.h"
-#include "include/core/config.h"
-#include "include/core/console.h"
+#include "core/point.h"
 
 class Object 
 {

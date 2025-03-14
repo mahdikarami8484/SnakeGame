@@ -1,4 +1,4 @@
-#include "objects/Player.h"
+#include "game/player.h"
 
 Player::Player(
             COORD pos, 

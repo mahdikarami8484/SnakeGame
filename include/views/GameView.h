@@ -1,7 +1,7 @@
 #ifndef GAME_VIEW_H
 #define GAME_VIEW_H
 
-#include "include/core/view.h"
+#include "core/view.h"
 #include <chrono>
 #include <ctime>
 #include <random>

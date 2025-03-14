@@ -1,9 +1,6 @@
 #ifndef VIEW_H
 #define VIEW_H
 
-#include "include/core/config.h"
-#include "include/core/console.h"
-
 class View 
 {
 public:
