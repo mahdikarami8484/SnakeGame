@@ -7,6 +7,7 @@ struct ScreenInfo {
     COORD size;
     CONSOLE_SCREEN_BUFFER_INFO csbi;
 };
+
 ScreenInfo GetScreenInfo(HANDLE output)
 {
     HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -21,90 +22,19 @@ ScreenInfo GetScreenInfo(HANDLE output)
 
     return information;
 }
-WORD ToForeground(const Graphics::Color &color) {
-    switch(color) {
-        case Graphics::Color::Black: {
-            return 0;
-        }
-
-        case Graphics::Color::Gray: {
-            return FOREGROUND_INTENSITY;
-        }
-
-        case Graphics::Color::Blue: {
-            return FOREGROUND_BLUE;
-        }
-
-        case Graphics::Color::BrightBlue: {
-            return FOREGROUND_BLUE | FOREGROUND_INTENSITY;
-        }
-
-        case Graphics::Color::Green: {
-            return FOREGROUND_GREEN;
-        }
-
-        case Graphics::Color::BrightGreen: {
-            return FOREGROUND_GREEN | FOREGROUND_INTENSITY;
-        }
-
-        case Graphics::Color::Red: {
-            return FOREGROUND_RED;
-        }
-
-        case Graphics::Color::BrightRed: {
-            return FOREGROUND_RED | FOREGROUND_INTENSITY;
-        }
-
-        case Graphics::Color::Cyan: {
-            return FOREGROUND_BLUE | FOREGROUND_GREEN;
-        }
-
-        case Graphics::Color::BrightCyan: {
-            return FOREGROUND_BLUE | FOREGROUND_GREEN | FOREGROUND_INTENSITY;
-        }
-
-        case Graphics::Color::Magenta: {
-            return FOREGROUND_BLUE | FOREGROUND_RED;
-        }
-
-        case Graphics::Color::BrightMagenta: {
-            return FOREGROUND_BLUE | FOREGROUND_RED | FOREGROUND_INTENSITY;
-        }
-
-        case Graphics::Color::Yellow: {
-            return FOREGROUND_GREEN | FOREGROUND_RED;
-        }
-
-        case Graphics::Color::BrightYellow: {
-            return FOREGROUND_GREEN | FOREGROUND_RED | FOREGROUND_INTENSITY;
-        }
-
-        case Graphics::Color::White: {
-            return FOREGROUND_BLUE | FOREGROUND_GREEN | FOREGROUND_RED;
-        }
-
-        default: {
-            return 0;
-        }
-    }
-}
-WORD ToBackground(const Graphics::Color &color) {
-    return ToForeground(color) << 4;
-}
 
 void Graphics::SetForeground(Color const &color) {
     HANDLE output = GetStdHandle(STD_OUTPUT_HANDLE);
     ScreenInfo info = GetScreenInfo(output);
 
-    WORD value = ToForeground(color);
+    WORD value = static_cast<WORD>(color);
     WORD attributes = info.csbi.wAttributes;
     SetConsoleTextAttribute(output, info.csbi.wAttributes);
 }
 
 void Graphics::SetBackground(const Graphics::Color &color) {
     HANDLE output = GetStdHandle(STD_OUTPUT_HANDLE);
-
-    WORD value = ToBackground(color);
+    WORD value = static_cast<WORD>(color) << 4;
     SetConsoleTextAttribute(output, value);
 }
 

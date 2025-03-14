@@ -5,21 +5,21 @@
 
 namespace Graphics {
     enum class Color {
-        Black, Gray,
-
-        Red, BrightRed,
-
-        Blue, BrightBlue,
-
-        Green, BrightGreen,
-
-        Cyan, BrightCyan,
-
-        Magenta, BrightMagenta,
-
-        Yellow, BrightYellow,
-
-        White
+        Black       = 0x0000,
+        Gray        = 0x0008,
+        Red         = 0x0004,
+        Green       = 0x0002,
+        Blue        = 0x0001,
+        Cyan            = Green | Blue,
+        Yellow          = Green | Red,
+        Magenta         = Blue | Red,
+        BrightRed       = Red | Gray,
+        BrightCyan      = Cyan | Gray,
+        BrightBlue      = Blue | Gray,
+        BrightGreen     = Green | Gray,
+        BrightYellow    = Yellow | Gray,
+        BrightMagenta   = Magenta | Gray,
+        White           = Red | Green | Blue
     };
 
     enum class TextAttribute {
