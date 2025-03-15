@@ -6,9 +6,6 @@
 class Snake : public Object
 {
     public: 
-        
-        std::string skin = "o";
-
         struct BodyPart {
             Point pos;
             Point last_pos;
@@ -32,4 +29,7 @@ class Snake : public Object
         void erase() override;
         void move() override;
         void handler_keys() override;
+
+    private:
+        std::string _skin = "o";
 };
