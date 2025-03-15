@@ -4,7 +4,7 @@ EXT = .exe
 
 all=main
 
-main: point.o graphics.o main.cpp
+main: point.o graphics.o size.o main.cpp
 	$(CC) $(CFLAGS) -o snake.exe *.o main.cpp
 
 snake.o: snake.cpp point.o
@@ -15,3 +15,6 @@ point.o:
 
 graphics.o:
 	$(CC) $(CFLAGS) -o graphics.o -c src/core/graphics.cpp
+
+size.o:
+	$(CC) $(CFLAGS) -o size.o -c src/core/size.cpp
