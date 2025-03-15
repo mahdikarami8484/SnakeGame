@@ -13,3 +13,17 @@ Snake::Snake(
         direction,
     });
 }
+
+void Snake::draw()
+{
+    for (auto& part : this->snakeBody)
+    {
+        Graphics::Draw(
+            this->_skin,
+            Graphics::Property(
+                this->_color
+            ),
+            part.pos
+        );
+    }
+}

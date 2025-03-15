@@ -12,7 +12,7 @@
 
 // Header files
 #include "core/Config.h"
-#include "core/Console.h"
+#include "core/graphics.h"
 
 class Menu_view
 {
