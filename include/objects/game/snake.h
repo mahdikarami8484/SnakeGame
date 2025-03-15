@@ -30,4 +30,7 @@ class Snake : public Object
 
     private:
         std::string _skin = "o";
+        
+        Graphics::Color _color = Graphics::Color::BrightGreen;
+        Graphics::Color _bg_color = Graphics::Color::Black;
 };
