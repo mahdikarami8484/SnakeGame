@@ -1,7 +1,9 @@
 #pragma once
 
 #include <iostream>
+#include "core/graphics.h"
 #include "core/point.h"
+
 
 class Object 
 {
