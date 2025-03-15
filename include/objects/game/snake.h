@@ -4,7 +4,7 @@
 #include "core/object.h"
 #include <vector>
 
-class Player : public Object
+class Snake : public Object
 {
     public: 
         
@@ -18,16 +18,16 @@ class Player : public Object
             COORD end_pos;
         };
 
-        std::vector<BodyPart> playerBody;
+        std::vector<BodyPart> snakeBody;
 
-        Player(
+        Snake(
             COORD pos, 
             COORD direction,
             COORD start_pos,
             COORD end_pos
         );
         
-        ~Player();
+        ~Snake();
 
         void draw() override;
         void erase() override;

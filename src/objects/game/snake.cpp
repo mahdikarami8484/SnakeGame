@@ -1,13 +1,13 @@
-#include "game/player.h"
+#include "object/game/snake.h"
 
-Player::Player(
+Snake::Snake(
             COORD pos, 
             COORD direction,
             COORD start_pos,
             COORD end_pos
 )
 {
-    this->playerBody.push_back({
+    this->snakeBody.push_back({
         pos,
         {0, 0},
         direction,
