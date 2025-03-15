@@ -2,7 +2,6 @@
 #define OBJECT_H
 
 #include <iostream>
-#include <windows.h>
 #include "core/point.h"
 
 class Object 
