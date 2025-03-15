@@ -17,8 +17,6 @@ class Snake : public Object
         Snake(
             Point pos, 
             Point direction,
-            Point start_pos,
-            Point end_pos
         );
         
         ~Snake();
@@ -30,7 +28,7 @@ class Snake : public Object
 
     private:
         std::string _skin = "o";
-        
+
         Graphics::Color _color = Graphics::Color::BrightGreen;
         Graphics::Color _bg_color = Graphics::Color::Black;
 };
