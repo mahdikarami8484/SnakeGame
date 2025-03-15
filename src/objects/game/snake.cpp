@@ -9,7 +9,7 @@ Snake::Snake(
 {
     this->snakeBody.push_back({
         pos,
-        {0, 0},
+        Point(),
         direction,
     });
 }
