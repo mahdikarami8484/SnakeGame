@@ -27,3 +27,15 @@ void Snake::draw()
         );
     }
 }
+
+void Snake::erase()
+{
+    for(auto& part : this->snakeBody)
+    {
+        Graphics::Draw(
+            " ",
+            Graphics::Property(),
+            part.pos
+        );
+    }
+}
