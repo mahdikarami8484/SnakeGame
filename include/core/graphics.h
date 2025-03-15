@@ -49,5 +49,3 @@ namespace Graphics {
 
     void Draw(std::string const &text, Property const &property);
 }
-
-#endif

@@ -11,5 +11,3 @@ public:
     // Call on every frame
     virtual void update() = 0;
 };
-
-#endif

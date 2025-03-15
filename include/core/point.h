@@ -79,5 +79,3 @@ std::ostream& operator<<(std::ostream& output, Point const& point);
 
 #include <vector>
 using PointList = std::vector<Point>;
-
-#endif
