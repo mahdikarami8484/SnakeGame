@@ -82,6 +82,7 @@ make
 ## How to Execute
 
 Enter the `build` folder after building the project and run `snake.exe`.
+
 **Note that this application is currenly compatible with Windows. Make sure you run this program through Command Prompt.**
 
 ## Contribution
