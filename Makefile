@@ -8,7 +8,7 @@ BUILD_DIR = build
 OBJ_DIR = $(BUILD_DIR)/obj
 
 main: build point.o graphics.o size.o system.o
-	$(CC) $(CFLAGS) -o $(BUILD_DIR)/snake.exe $(OBJ_DIR)/*.o main.cpp
+	$(CC) $(CFLAGS) -o $(BUILD_DIR)/snake.exe $(OBJ_DIR)/*.o main.cpp resources/logo.res
 
 build:
 	mkdir -p $(OBJ_DIR)
