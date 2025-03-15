@@ -36,9 +36,7 @@ make --version
 ```
 make
 ```
-8. Execute **snake.exe**
-
-**Note**: Bear in mind that this program needs to be executed directly through Command Prompt `cmd.exe`. It might not work properly in other environments.
+**Note**: Bear in mind that this program needs to be executed directly through Command Prompt `cmd.exe` since it might not work properly in other environments.
 
 ## Contribution
 If you have any suggestions or improvements, feel free to submit a pull request (PR).
