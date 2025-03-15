@@ -5,15 +5,6 @@
 
 namespace Graphics {
 
-    enum class Color;
-
-    class Property  {
-    public:
-        Color foreground;
-        Color background;
-        Property(Color const& foreground = Color::White, Color const& background = Color::Black);
-    };
-
     enum class Color {
         Black,
         Blue,
@@ -30,6 +21,13 @@ namespace Graphics {
         BrightRed,
         BrightMagenta,
         BrightYellow
+    };
+
+    class Property  {
+    public:
+        Color foreground;
+        Color background;
+        Property(Color const& foreground = Color::White, Color const& background = Color::Black);
     };
 
     Size GetSize();
