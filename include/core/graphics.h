@@ -11,7 +11,7 @@ namespace Graphics {
         Green,
         Cyan,
         Red,
-        Magneta,
+        Magenta,
         Yellow,
         White,
         Gray,
