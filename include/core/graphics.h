@@ -1,5 +1,5 @@
-#ifndef CONSOLE_H
-#define CONSOLE_H
+#ifndef GRAPHICS_H
+#define GRAPHICS_H
 
 #include "point.h"
 
