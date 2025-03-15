@@ -79,7 +79,20 @@ void Graphics::Draw(std::string const &text, Property const &property) {
     SetProperty(Property());
 }
 
-void Graphics::MoveCursor(Point const &point) {
+void Graphics::Draw(std::string const &text, Property const &property, Point const &point)
+{
+    MoveCursor(point);
+    Draw(text, property);
+}
+
+void Graphics::Draw(std::string const &text, Property const &property, Component const &x, Component const &y)
+{
+    MoveCursor(x, y);
+    Draw(text, property);
+}
+
+void Graphics::MoveCursor(Point const &point)
+{
     COORD coord;
     HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
     coord.X = point.GetX();
