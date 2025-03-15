@@ -1,4 +1,4 @@
-#include "object/game/snake.h"
+#include "objects/game/snake.h"
 
 Snake::Snake(
             COORD pos, 
