@@ -13,7 +13,7 @@ This is a simple terminal-based snake game developed using C++.
 
 ## How to Compile and Run
 1. Make sure you are on a **Windows** machine.
-2. Download and install MSYS2 from [official website](www.msys2.org).
+2. Download and install MSYS2 from [official website](https://www.msys2.org).
 3. Open MSYS2 terminal (MSYS MinGW 64-bit or MSYS2 MinGW 32-bit).
 4. Update the package manager:
 ```
