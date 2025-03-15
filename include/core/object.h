@@ -1,5 +1,4 @@
-#ifndef OBJECT_H
-#define OBJECT_H
+#pragma once
 
 #include <iostream>
 #include "core/point.h"
