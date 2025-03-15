@@ -81,10 +81,8 @@ make
 ```
 ## How to Execute
 
- **Note that Windows operating system is required to run this program.**
-
-To run it, just complete the compilation steps first, then enter the build folder and run `snake.exe`
-
+Enter the `build` folder after building the project and run `snake.exe`.
+**Note that this application is currenly compatible with Windows. Make sure you run this program through Command Prompt.**
 
 ## Contribution
 
