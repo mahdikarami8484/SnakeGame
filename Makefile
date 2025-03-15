@@ -7,7 +7,7 @@ all = main
 BUILD_DIR = build
 OBJ_DIR = $(BUILD_DIR)/obj
 
-main: build point.o graphics.o size.o
+main: build point.o graphics.o size.o system.o
 	$(CC) $(CFLAGS) -o $(BUILD_DIR)/snake.exe $(OBJ_DIR)/*.o main.cpp
 
 build:
@@ -21,6 +21,9 @@ point.o:
 
 graphics.o:
 	$(CC) $(CFLAGS) -o $(OBJ_DIR)/graphics.o -c src/core/graphics.cpp
+
+system.o:
+	$(CC) $(CFLAGS) -o $(OBJ_DIR)/system.o -c src/core/system.cpp
 
 size.o:
 	$(CC) $(CFLAGS) -o $(OBJ_DIR)/size.o -c src/core/size.cpp
