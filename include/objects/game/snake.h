@@ -10,20 +10,20 @@ class Snake : public Object
         std::string skin = "o";
 
         struct BodyPart {
-            COORD pos;
-            COORD last_pos;
-            COORD direction;
-            COORD start_pos;
-            COORD end_pos;
+            Point pos;
+            Point last_pos;
+            Point direction;
+            Point start_pos;
+            Point end_pos;
         };
 
         std::vector<BodyPart> snakeBody;
 
         Snake(
-            COORD pos, 
-            COORD direction,
-            COORD start_pos,
-            COORD end_pos
+            Point pos, 
+            Point direction,
+            Point start_pos,
+            Point end_pos
         );
         
         ~Snake();
@@ -33,5 +33,3 @@ class Snake : public Object
         void move() override;
         void handler_keys() override;
 };
-
-#endif
