@@ -16,7 +16,7 @@ class Snake : public Object
 
         Snake(
             Point pos, 
-            Point direction,
+            Point direction
         );
         
         ~Snake();
