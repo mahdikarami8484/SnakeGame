@@ -1,4 +1,4 @@
-name: C++ Build
+name: C++ Build (Windows)
 
 on: 
   push:
@@ -8,17 +8,23 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Install Dependencies
-        run: sudo apt-get update && sudo apt-get install -y build-essential
+      - name: Install MinGW-w64
+        run: choco install mingw
+
+      - name: Add MinGW to PATH
+        run: echo "C:\Program Files\mingw64\bin" | Out-File -Append -Encoding utf8 $env:GITHUB_PATH
+
+      - name: Verify MinGW Installation
+        run: g++ --version
 
       - name: Build with Makefile
-        run: make
+        run: mingw32-make
 
       - name: Verify Output
-        run: ls -l
+        run: dir
