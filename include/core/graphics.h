@@ -4,10 +4,11 @@
 #include "point.h"
 
 namespace Graphics {
-    class Property {
+    class Property  {
     public:
-        Color foreground = Color::White;
-        Color background = Color::Black;
+        Color foreground;
+        Color background;
+        Property(Color const& foreground = Color::White, Color const& background = Color::Black);
     };
 
     enum class Color {

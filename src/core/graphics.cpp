@@ -3,6 +3,12 @@
 #include <iostream>
 #include <string>
 
+Graphics::Property::Property(Color const& foreground, Color const& background)
+{
+    this->foreground = foreground;
+    this->background = background;
+}
+
 struct ScreenInfo {
     COORD size;
     CONSOLE_SCREEN_BUFFER_INFO csbi;
@@ -58,13 +64,9 @@ void Graphics::SetProperty(Property const &property) {
     SetForeground(property.foreground);
     SetBackground(property.background);
 }
-
 Graphics::Property Graphics::GetProperty()
 {
-    Property result;
-    result.foreground = GetForeground();
-    result.background = GetBackground();
-    return result;
+    return Property(GetForeground(), GetBackground());
 }
 
 void Graphics::Draw(std::string const &text, Property const &property) {
