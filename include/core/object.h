@@ -30,5 +30,3 @@ protected:
     Point _current;
     std::string _skin;
 };
-
-#endif
