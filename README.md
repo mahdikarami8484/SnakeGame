@@ -26,7 +26,7 @@ This is a simple terminal-based snake game developed using C++.
 
 ## How to Compile
 
- ### | Windows OS |
+ ### Microsoft Windows
 1. Download and install MSYS2 from [official website](https://www.msys2.org).
 
 2. Open MSYS2 terminal (MSYS MinGW 64-bit or MSYS2 MinGW 32-bit).
@@ -63,7 +63,7 @@ make --version
 ```bash
 make
 ```
- ### | Linux OS |
+ ### Linux
 Before building the project, ensure that you have the following installed:
 
 - **MinGW-w64**: The cross-compiler for Windows.
@@ -79,12 +79,13 @@ Now in the project directory, simply execute:
 ```bash
 make
 ```
-## How to run
+## How to Execute
 
- **A Windows operating system is required to run this program.**
-To run it, just complete the compilation steps first, then enter the build folder and run snake.exe
+ **Note that Windows operating system is required to run this program.**
+
+To run it, just complete the compilation steps first, then enter the build folder and run `snake.exe`
 
 
 ## Contribution
 
-If you have any suggestions or improvements, feel free to submit a pull request (PR).
+If you have any suggestions or improvements, feel free to submit a pull request.
