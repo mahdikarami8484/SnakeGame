@@ -39,3 +39,12 @@ void Snake::erase()
         );
     }
 }
+
+void Snake::move()
+{
+    this->erase();
+    
+    // move 
+
+    this->draw();
+}
