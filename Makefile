@@ -1,5 +1,6 @@
-CC=x86_64-w64-mingw32-g++
-CFLAGS=-std=c++2a -Wextra -Wall -I"$(shell cygpath -m "$(CURDIR)/include")"
+CC = x86_64-w64-mingw32-g++
+CFLAGS = -std=c++2a -Wextra -Wall -I"$(CURDIR)/include"
+EXT = .exe
 
 all=main
 
