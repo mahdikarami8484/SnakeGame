@@ -101,3 +101,9 @@ void Graphics::EraseConsole()
     FillConsoleOutputAttribute(output,  info.csbi.wAttributes, info.size.X * info.size.Y, {0, 0},  &dwWritten);
     MoveCursor(Point(0, 0));
 }
+
+Size Graphics::GetSize()
+{
+    HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
+    return Size(GetScreenInfo(handle).size.X, GetScreenInfo(handle).size.Y);
+}

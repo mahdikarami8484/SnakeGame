@@ -2,6 +2,7 @@
 #define GRAPHICS_H
 
 #include "point.h"
+#include "size.h"
 
 namespace Graphics {
     class Property  {
@@ -29,6 +30,7 @@ namespace Graphics {
         BrightYellow
     };
 
+    Size GetSize();
     void EraseConsole();
 
     Color GetForeground();
