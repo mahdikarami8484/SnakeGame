@@ -1,10 +1,10 @@
 #include "objects/game/snake.h"
 
 Snake::Snake(
-            COORD pos, 
-            COORD direction,
-            COORD start_pos,
-            COORD end_pos
+            Point pos, 
+            Point direction,
+            Point start_pos,
+            Point end_pos
 )
 {
     this->snakeBody.push_back({
