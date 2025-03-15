@@ -46,4 +46,6 @@ namespace Graphics {
     void MoveCursor(Component const& x, Component const& y);
 
     void Draw(std::string const &text, Property const &property);
+    void Draw(std::string const &text, Property const &property, Point const &point);
+    void Draw(std::string const &text, Property const &property, Component const& x, Component const& y);
 }
