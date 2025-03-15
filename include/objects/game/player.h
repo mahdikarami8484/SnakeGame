@@ -1,7 +1,7 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-#include "game/object.h"
+#include "core/object.h"
 #include <vector>
 
 class Player : public Object
