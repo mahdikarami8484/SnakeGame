@@ -4,6 +4,9 @@
 #include "size.h"
 
 namespace Graphics {
+
+    enum class Color;
+
     class Property  {
     public:
         Color foreground;
