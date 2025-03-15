@@ -1,5 +1,4 @@
-#ifndef GRAPHICS_H
-#define GRAPHICS_H
+#pragma once
 
 #include "point.h"
 #include "size.h"

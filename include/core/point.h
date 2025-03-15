@@ -1,5 +1,4 @@
-#ifndef POINT_H
-#define POINT_H
+#pragma once
 
 #include <cstdint>
 #include <istream>
