@@ -51,3 +51,6 @@ ipch/
 *.sln
 *.vcxproj
 *.vcxproj.*
+
+# google idx config 
+.idx
