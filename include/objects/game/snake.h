@@ -10,8 +10,6 @@ class Snake : public Object
             Point pos;
             Point last_pos;
             Point direction;
-            Point start_pos;
-            Point end_pos;
         };
 
         std::vector<BodyPart> snakeBody;

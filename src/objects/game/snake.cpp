@@ -11,7 +11,5 @@ Snake::Snake(
         pos,
         {0, 0},
         direction,
-        start_pos,
-        end_pos
     });
 }
