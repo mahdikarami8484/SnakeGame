@@ -42,7 +42,20 @@ void Snake::move()
 {
     this->erase();
     
-    // move 
+    int counter = 0;
+    for(auto& part : this->snakeBody)
+    {
+        part.last_pos = part.pos;
+
+        if(counter)
+        {
+            part.pos = this->snakeBody[counter-1].last_pos;  
+            continue;
+        }
+
+        part.pos += part.direction;
+        counter++;
+    }
 
     this->draw();
 }
