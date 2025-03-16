@@ -1,7 +1,7 @@
 #pragma once
 
 #include "core/keyboard.h"
-#include "core/object.h"
+#include "object.h"
 #include <vector>
 
 class Snake : public Object, KeyRecognizer

@@ -1,7 +1,7 @@
 #pragma once
 
-#include "graphics.h"
-#include "point.h"
+#include "core/graphics.h"
+#include "core/point.h"
 
 class Object
 {
