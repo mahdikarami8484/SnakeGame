@@ -6,3 +6,5 @@ Point Object::CurrentPoint() const {
 void Object::SetCurrentPoint(Point const &value) {
     _current = value;
 }
+
+void Object::Move() {}

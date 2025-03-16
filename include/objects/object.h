@@ -7,8 +7,9 @@ class Object
 {
 public:
     virtual void Draw() = 0;
-    virtual void Move() = 0;
     virtual void Erase() = 0;
+
+    virtual void Move();
 
     Point CurrentPoint() const;
     void SetCurrentPoint(Point const &value);
