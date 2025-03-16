@@ -28,8 +28,6 @@ public:
 
 protected:
     std::string GetSkin() const override;
-
-private:
-    Graphics::Color _color = Graphics::Color::BrightGreen;
-    Graphics::Color _bg_color = Graphics::Color::Black;
+    Graphics::Color GetForeground() const override;
+    Graphics::Color GetBackground() const override;
 };

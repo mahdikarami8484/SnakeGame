@@ -15,6 +15,8 @@ public:
 
 protected:
     virtual std::string GetSkin() const = 0;
+    virtual Graphics::Color GetForeground() const = 0;
+    virtual Graphics::Color GetBackground() const = 0;
 
 protected:
     Point _current;

@@ -65,3 +65,12 @@ std::string Snake::GetSkin() const
 {
     return "o";
 }
+Graphics::Color Snake::GetForeground() const
+{
+    return Graphics::Color::BrightGreen;
+}
+
+Graphics::Color Snake::GetBackground() const
+{
+    return Graphics::Color::Black;
+}

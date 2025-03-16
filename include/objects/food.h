@@ -11,9 +11,6 @@ public:
 
 protected:
     virtual std::string GetSkin() const override;
-
-private:
-    Graphics::Color _color = Graphics::Color::Magenta;
-    Graphics::Color _bg_color = Graphics::Color::Black;
-
+    virtual Graphics::Color GetForeground() const override;
+    virtual Graphics::Color GetBackground() const override;
 };
