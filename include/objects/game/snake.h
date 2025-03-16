@@ -1,9 +1,10 @@
 #pragma once
 
+#include "core/keyboard.h"
 #include "core/object.h"
 #include <vector>
 
-class Snake : public Object
+class Snake : public Object, KeyRecognizer
 {
     public: 
         struct BodyPart {
@@ -24,7 +25,6 @@ class Snake : public Object
         void draw() override;
         void erase() override;
         void move() override;
-        void handler_keys() override;
 
     private:
         std::string _skin = "o";
