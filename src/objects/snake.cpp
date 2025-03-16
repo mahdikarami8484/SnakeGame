@@ -12,7 +12,7 @@ Snake::Snake(
     });
 }
 
-void Snake::draw()
+void Snake::Draw()
 {
     const std::string skin = this->GetSkin();
     const Graphics::Color color = this->GetForeground();
@@ -28,7 +28,7 @@ void Snake::draw()
     }
 }
 
-void Snake::erase()
+void Snake::Erase()
 {
     for(auto& part : this->snakeBody)
     {
@@ -40,9 +40,9 @@ void Snake::erase()
     }
 }
 
-void Snake::move()
+void Snake::Move()
 {
-    this->erase();
+    this->Erase();
     
     int counter = 0;
     for(auto& part : this->snakeBody)
@@ -59,7 +59,7 @@ void Snake::move()
         counter++;
     }
 
-    this->draw();
+    this->Draw();
 }
 
 std::string Snake::GetSkin() const

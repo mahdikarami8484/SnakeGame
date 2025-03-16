@@ -6,8 +6,8 @@ class Food : public Object
 {
 public:
     Food();
-    void draw() override;
-    void erase() override;
+    void Draw() override;
+    void Erase() override;
 
 protected:
     virtual std::string GetSkin() const override;

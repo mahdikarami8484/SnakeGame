@@ -22,9 +22,9 @@ public:
         
     ~Snake();
 
-    void draw() override;
-    void erase() override;
-    void move() override;
+    void Draw() override;
+    void Erase() override;
+    void Move() override;
 
 protected:
     std::string GetSkin() const override;
