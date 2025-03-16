@@ -51,14 +51,19 @@ pacman -Syu
 ```bash
 pacman -S mingw-w64-i686-make
 ```
+5. Install `make` through the following command:
+   
+```bash
+pacman -S make
+```
 
-5. Check the installation:
+6. Check the installation:
 
 ```bash
 make --version
 ```
 
-6. Now in the project directory, simply execute:
+7. Now in the project directory, simply execute:
 
 ```bash
 make
