@@ -15,12 +15,13 @@ Snake::Snake(
 void Snake::draw()
 {
     const std::string skin = this->GetSkin();
+    const Graphics::Color color = this->GetForeground();
     for (auto& part : this->snakeBody)
     {
         Graphics::Draw(
             skin,
             Graphics::Property(
-                this->_color
+                color
             ),
             part.pos
         );
