@@ -1,4 +1,4 @@
-#include "core/object.h"
+#include "objects/object.h"
 
 Point Object::CurrentPoint() const {
     return _current;

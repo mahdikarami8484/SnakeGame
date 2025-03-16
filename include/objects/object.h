@@ -14,7 +14,7 @@ public:
     void SetCurrentPoint(Point const &value);
 
 protected:
-    virtual char GetSkin() const = 0;
+    virtual std::string GetSkin() const = 0;
 
 protected:
     Point _current;

@@ -6,29 +6,30 @@
 
 class Snake : public Object, KeyRecognizer
 {
-    public: 
-        struct BodyPart {
-            Point pos;
-            Point last_pos;
-            Point direction;
-        };
+public:
+    struct BodyPart {
+        Point pos;
+        Point last_pos;
+        Point direction;
+    };
 
-        std::vector<BodyPart> snakeBody;
+    std::vector<BodyPart> snakeBody;
 
-        Snake(
-            Point pos, 
-            Point direction
-        );
+    Snake(
+        Point pos,
+        Point direction
+    );
         
-        ~Snake();
+    ~Snake();
 
-        void draw() override;
-        void erase() override;
-        void move() override;
+    void draw() override;
+    void erase() override;
+    void move() override;
 
-    private:
-        std::string _skin = "o";
+protected:
+    std::string GetSkin() const override;
 
-        Graphics::Color _color = Graphics::Color::BrightGreen;
-        Graphics::Color _bg_color = Graphics::Color::Black;
+private:
+    Graphics::Color _color = Graphics::Color::BrightGreen;
+    Graphics::Color _bg_color = Graphics::Color::Black;
 };
