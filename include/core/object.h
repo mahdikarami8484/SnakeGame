@@ -1,11 +1,9 @@
 #pragma once
 
-#include <iostream>
-#include "core/graphics.h"
-#include "core/point.h"
+#include "graphics.h"
+#include "point.h"
 
-
-class Object 
+class Object
 {
 public:
     // Draw the object on the view.
@@ -17,16 +15,9 @@ public:
     // Move the object to a new position in the view.
     virtual void move() = 0;
 
-    // Handles keyboard input and processes key events.
-    virtual void handler_keys() = 0;
-
     // Handles the current point of the object.
-    inline Point currentPoint() const {
-        return _current;
-    }
-    inline Point setCurrentPoint(Point const &value) {
-        _current = value;
-    }
+    Point CurrentPoint() const;
+    void SetCurrentPoint(Point const &value);
 
 protected:
     Point _current;
