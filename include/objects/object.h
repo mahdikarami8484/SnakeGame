@@ -11,8 +11,8 @@ public:
 
     virtual void Move();
 
-    Point CurrentPoint() const;
-    void SetCurrentPoint(Point const &value);
+    Point GetPosition() const;
+    void SetPosition(Point const &value);
 
 protected:
     virtual std::string GetSkin() const = 0;

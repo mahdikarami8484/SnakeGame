@@ -1,9 +1,9 @@
 #include "objects/object.h"
 
-Point Object::CurrentPoint() const {
+Point Object::GetPosition() const {
     return _current;
 }
-void Object::SetCurrentPoint(Point const &value) {
+void Object::SetPosition(Point const &value) {
     this->Erase();
     _current = value;
     this->Draw();
