@@ -8,7 +8,6 @@ class Food : public Object
         Food();
         void draw() override;
         void erase() override;
-        void handler_keys() override;
     
     private:
         std::string _skin = "*";
