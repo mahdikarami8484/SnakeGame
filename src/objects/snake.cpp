@@ -1,4 +1,4 @@
-#include "objects/game/snake.h"
+#include "objects/snake.h"
 
 Snake::Snake(
             Point pos, 
@@ -14,12 +14,14 @@ Snake::Snake(
 
 void Snake::draw()
 {
+    const std::string skin = this->GetSkin();
+    const Graphics::Color color = this->GetForeground();
     for (auto& part : this->snakeBody)
     {
         Graphics::Draw(
-            this->_skin,
+            skin,
             Graphics::Property(
-                this->_color
+                color
             ),
             part.pos
         );
@@ -58,4 +60,18 @@ void Snake::move()
     }
 
     this->draw();
+}
+
+std::string Snake::GetSkin() const
+{
+    return "o";
+}
+Graphics::Color Snake::GetForeground() const
+{
+    return Graphics::Color::BrightGreen;
+}
+
+Graphics::Color Snake::GetBackground() const
+{
+    return Graphics::Color::Black;
 }
