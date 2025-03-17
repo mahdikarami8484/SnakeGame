@@ -18,6 +18,8 @@ protected:
     virtual Graphics::Color GetForeground() const = 0;
     virtual Graphics::Color GetBackground() const = 0;
 
+    std::string GetSpaces() const;
+
 protected:
     Point _current;
 };
