@@ -1,5 +1,29 @@
 #include "objects/food.h"
 
+Food::Food(Point const &pos)
+{
+    this->SetCurrentPoint(pos);
+    this->draw();
+}
+
+void Food::draw()
+{
+    Graphics::Draw(
+        this->GetSkin(),
+        Graphics::Property(this->GetForeground()),
+        this->CurrentPoint()
+    );
+}
+
+void Food::erase()
+{
+    Graphics::Draw(
+        this->GetSpaces(),
+        Graphics::Property(),
+        this->CurrentPoint()
+    );
+}
+
 std::string Food::GetSkin() const
 {
     return "*";
