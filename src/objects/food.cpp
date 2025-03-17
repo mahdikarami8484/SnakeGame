@@ -1,8 +1,7 @@
 #include "objects/food.h"
 
-Food::Food(Point const &pos)
+Food::Food(Point const &pos) : Object(pos)
 {
-    this->SetCurrentPoint(pos);
     this->draw();
 }
 

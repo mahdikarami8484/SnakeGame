@@ -1,5 +1,10 @@
 #include "objects/object.h"
 
+Object::Object(Point const &pos)
+{
+    this->SetCurrentPoint(pos);
+}
+
 Point Object::CurrentPoint() const {
     return _current;
 }

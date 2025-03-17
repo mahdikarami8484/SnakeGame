@@ -5,8 +5,10 @@
 class Food : public Object
 {
 public:
-    Food();
+    Food(Point const &pos);
+
     void draw() override;
+    
     void erase() override;
 
 protected:
