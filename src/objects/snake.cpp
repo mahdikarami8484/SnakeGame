@@ -33,7 +33,7 @@ void Snake::erase()
     for(auto& part : this->snakeBody)
     {
         Graphics::Draw(
-            " ",
+            this->GetSpaces(),
             Graphics::Property(),
             part.pos
         );
