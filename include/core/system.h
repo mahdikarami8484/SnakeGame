@@ -1,5 +1,7 @@
 #pragma once
 
+#include <iostream>
+#include <map>
 #include <cstdint>
 
 namespace System {
