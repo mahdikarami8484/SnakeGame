@@ -1,30 +1,31 @@
-# Snake Game in Terminal
+# Snake Game
 
-  
+![Cover](docs/images/Logo.png)
 
-This is a simple terminal-based snake game developed using C++.
+*Snake Game* is a Terminal-based game which tries to simulate the game in real world.
 
+You have to eat as many fruits **(shown as stars)** as possible in the game. The more you eat fruit, the more the score you gain.
+
+![Screenshot](docs/images/screenshots/1.png)
   
 
 ## Features
 
-  
-
-- A terminal-based interface with a menu and gameplay screen.
+- A terminal-based interface with a gameplay screen.
 
 - The ability to control the snake’s movement using keyboard inputs.
 
 - A basic game loop with frame updates.
 
-- Snake body design added and functioning correctly.
+- Player speed and game frame rate adjusted for smoother gameplay with no image jumping.
 
-- Player speed and game frame rate adjusted for smoother gameplay (**TODO: Frame rate and player speed issues need further adjustments**).
+## How to Build and Run
 
-- Fixed issue with time frame and image jumping (**TODO: Need to resolve the time frame and image jumping problem completely**).
+To build and run this project, you need to have `mingw-w64` and `make` installed on your computer.
 
-  
+You can follow how to install `mingw-w64` through the guide provided for Visual Studio Code in this [link](https://code.visualstudio.com/docs/cpp/config-mingw#_installing-the-mingww64-toolchain).
 
-## How to Compile
+Here's how to install `make` on your computer:
 
  ### Microsoft Windows
 1. Download and install MSYS2 from [official website](https://www.msys2.org).
@@ -68,28 +69,15 @@ make --version
 ```bash
 make
 ```
- ### Linux
-Before building the project, ensure that you have the following installed:
 
-- **MinGW-w64**: The cross-compiler for Windows.
-- **Make**: A build automation tool.
-
-You can install the necessary tools on Linux using the following commands:
-
-```bash
-sudo apt update
-sudo apt install mingw-w64 make
-```
-Now in the project directory, simply execute:
-```bash
-make
-```
 ## How to Execute
 
 Enter the `build` folder after building the project and run `snake.exe`.
 
-**Note that this application is currenly compatible with Windows. Make sure you run this program through Command Prompt.**
+**This application is currenly compatible with Windows. Make sure you run this program through Command Prompt.**
 
 ## Contribution
 
-If you have any suggestions or improvements, feel free to submit a pull request.
+You can submit your issues in the [issues](https://github.com/mahdikarami8484/SnakeGame/issues) section. You can talk about any bugs, invalid result and improvements about this project.
+
+Moreover, you can send us a [pull request](https://github.com/mahdikarami8484/SnakeGame/pulls) if you'd like to contribute to project. We're open to any useful tips and suggestions. :)
