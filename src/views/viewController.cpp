@@ -49,7 +49,6 @@ void ViewController::load(std::shared_ptr<View> view) {
         }
     });  
     viewThread.detach();
-    System::WaitForThreads();
 }
 
 void ViewController::unLoad() {
