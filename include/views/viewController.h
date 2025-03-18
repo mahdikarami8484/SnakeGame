@@ -6,13 +6,13 @@
 class ViewController {
 
     protected:
-    void SetCurrentView(std::shared_ptr<View> view);
+        void SetCurrentView(std::shared_ptr<View> view);
 
     public:
         class ViewList {
             public:
                 void addView(std::string const &name, std::shared_ptr<View> view);
-                std::shared_ptr<View> GetViewByName(std::string const &name) const;
+                std::shared_ptr<View> GetViewByName(std::string const &name);
             
             protected:
                 std::vector<std::shared_ptr<View>> views;

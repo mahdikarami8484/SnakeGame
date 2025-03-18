@@ -7,6 +7,17 @@ ViewController::ViewController() {
     this->_viewList.addView(GameView().GetName(), std::make_shared<GameView>());
 }
 
+void ViewController::ViewList::addView(std::string const &name, std::shared_ptr<View> view) {
+    this->views.push_back(view);
+    this->name_map[name] = view;
+}
+
+std::shared_ptr<View> 
+    ViewController::ViewList::GetViewByName(std::string const &name) {
+        if(this->name_map.find(name) == name_map.end()) return nullptr;
+        return this->name_map[name];
+}
+
 ViewController::ViewList ViewController::GetViewList() const {
     return this->_viewList;
 }
