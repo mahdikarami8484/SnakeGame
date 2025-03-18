@@ -141,4 +141,14 @@ void GameView::update(){
     checkCollisionWithWalls();
 }
 
-void GameView::whenPause() {}
+void GameView::whenPause()
+{
+    Graphics::EraseConsole();
+    Graphics::Draw(
+        "Game Over",
+        Graphics::Property(Graphics::Color::Red, Graphics::Color::Cyan),
+        Point(Graphics::GetSize().GetWidth() / 2 - 5, Graphics::GetSize().GetHeight() / 2)
+    );
+    System::Delay(2000);
+    exit(EXIT_SUCCESS);
+}
