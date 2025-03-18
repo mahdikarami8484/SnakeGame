@@ -1,5 +1,4 @@
 #include "core/point.h"
-#include <format>
 
 Point::Point()
 {
@@ -186,6 +185,6 @@ bool operator!=(Point const& one, Point const& two)
 }
 std::ostream &operator<<(std::ostream &output, Point const &point)
 {
-    output << std::format("({}, {})", point._x, point._y);
+    output << '(' << point._x << ',' << ' ' << point._y << ')';
     return output;
 }
