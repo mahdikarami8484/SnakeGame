@@ -28,3 +28,9 @@ std::string Block::GetSkin() const {
 Graphics::Color Block::GetForeground() const {
     return Graphics::Color::BrightYellow;
 }
+
+void Block::move() {}
+
+Graphics::Color Block::GetBackground() const {
+    return Graphics::Color::Black;
+}
