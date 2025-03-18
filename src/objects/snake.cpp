@@ -12,7 +12,6 @@ void Snake::add() {
 
 void Snake::draw() {
     for(auto& part : this->snake) {
-        part.erase();
         part.draw();
     }
 }

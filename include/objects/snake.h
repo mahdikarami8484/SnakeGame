@@ -15,8 +15,8 @@ class Snake : public Object {
         Graphics::Color GetBackground() const override { return Graphics::Color::Black; };
 
     public:
-        void draw();
-        void erase();
+        virtual void draw() override;
+        virtual void erase() override;
 
         void add();
         void move();
