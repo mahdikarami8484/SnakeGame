@@ -28,11 +28,25 @@ size.o:
 keyboard.o: system.o
 	$(CC) $(CFLAGS) -o $(OBJ_DIR)/keyboard.o -c src/core/keyboard.cpp
 
+view.o: graphics.o system.o
+	$(CC) $(CFLAGS) -o $(OBJ_DIR)/view.o -c src/views/view.cpp
+
+viewController.o: system.o view.o
+	$(CC) $(CFLAGS) -o $(OBJ_DIR)/viewController.o -c src/views/viewController.cpp
+
+gameView.o: view.o
+	$(CC) $(CFLAGS) -o $(OBJ_DIR)/gameView.o -c src/views/gameView.cpp
+
+
 object.o: point.o
 	$(CC) $(CFLAGS) -o $(OBJ_DIR)/object.o -c src/objects/object.cpp
 
 food.o: object.o
 	$(CC) $(CFLAGS) -o $(OBJ_DIR)/food.o -c src/objects/food.cpp
+
+block.o: object.o
+	$(CC) $(CFLAGS) -o $(OBJ_DIR)/block.o -c src/objects/block.cpp
+
 
 snake.o: food.o keyboard.o
 	$(CC) $(CFLAGS) -o $(OBJ_DIR)/snake.o -c src/objects/snake.cpp
