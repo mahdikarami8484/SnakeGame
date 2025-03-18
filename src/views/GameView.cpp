@@ -8,7 +8,16 @@ GameView::GameView(){
     this->_viewStartPos = Point(2, 2);
 }
 
-std::string GameView::GetName() const {
+GameView::~GameView()
+{
+    running = false;
+    if(controlThread.joinable()) {
+        controlThread.join();
+    }
+}
+
+std::string GameView::GetName() const
+{
     return "GameView";
 }
 
@@ -97,14 +106,12 @@ void GameView::start() {
     this->spawnFood();
     this->drawTitle();
     this->spawnSnake();
-
-    std::thread keyActionThread([this]() {
-        while (true) {
+    controlThread = std::thread([this]() {
+        while(running) {
             this->CheckForAction();
+            std::this_thread::sleep_for(std::chrono::microseconds(10));
         }
     });  
-
-    keyActionThread.detach();
 }
 
 void GameView::checkCollisionWithFood() {

@@ -5,54 +5,40 @@
 #include "objects/block.h"
 #include "objects/food.h"
 #include "objects/snake.h"
+#include <thread>
 
 class GameView : public View, public KeyRecognizer 
 {
-        public:
-            GameView();
+public:
+    GameView();
+    ~GameView();
 
-        public:
-            void start() override;
+    void start() override;
+    void update() override;
+    void whenPause() override;
+    std::string GetName() const override;
             
-            void update() override;
+protected:
+    virtual void MoveUp() override;
+    virtual void MoveDown() override;
+    virtual void MoveLeft() override;
+    virtual void MoveRight() override;
 
-            void whenPause() override;
-            
-            std::string GetName() const override;
-        
-        private:
-            Size _viewSize;
-            Point _viewStartPos;
+private:
+    void addWalls();
+    void spawnFood();
+    void drawTitle();
+    void spawnSnake();
+    void addWall(Point pos);
+    void checkCollisionWithFood();
+    void checkCollisionWithWalls();
 
-        // Key handler 
-        protected:
-            virtual void MoveUp() override;
-            virtual void MoveDown() override;
-            virtual void MoveLeft() override;
-            virtual void MoveRight() override;
-
-        // Block Object 
-        private:
-            std::vector<Block> blocks;           
-        private: 
-            void addWalls();
-            void addWall(Point pos);
-            
-        // Food Object
-        private:
-            Food food;
-        private:
-            void spawnFood();
-            void checkCollisionWithFood();
-            void checkCollisionWithWalls();
-
-        // Snake Object
-        private:
-            Snake snake;
-        private:
-            void spawnSnake();
-
-        private:
-            void drawTitle();
-
+private:
+    Food food;
+    Snake snake;
+    Size _viewSize;
+    bool running = true;
+    Point _viewStartPos;
+    std::vector<Block> blocks;
+    std::thread controlThread;
 };
