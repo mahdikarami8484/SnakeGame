@@ -5,11 +5,13 @@
 class Food : public Object
 {
 public:
-    Food(Point const &pos);
+    Food(Point const &pos = Point());
 
     void draw() override;
     
     void erase() override;
+
+    void move() override {};
 
 protected:
     virtual std::string GetSkin() const override;
