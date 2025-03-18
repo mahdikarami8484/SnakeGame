@@ -4,26 +4,26 @@
 
 KeyRecognizer::KeyRecognizer()
 {
-    _controls.insert({Action::MoveFoward, VK_UP});
-    _controls.insert({Action::MoveBackward, VK_DOWN});
+    _controls.insert({Action::MoveUp, VK_UP});
+    _controls.insert({Action::MoveDown, VK_DOWN});
     _controls.insert({Action::MoveLeft, VK_LEFT});
     _controls.insert({Action::MoveRight, VK_RIGHT});
 }
 
 void KeyRecognizer::CheckForAction()
 {
-    auto result = _controls.equal_range(Action::MoveFoward);
+    auto result = _controls.equal_range(Action::MoveUp);
     for(auto i = result.first; i != result.second; ++i) {
         if(GetAsyncKeyState(i->second) & 0x8000) {
-            MoveFoward();
+            MoveUp();
             return;
         }
     }
 
-    result = _controls.equal_range(Action::MoveBackward);
+    result = _controls.equal_range(Action::MoveDown);
     for(auto i = result.first; i != result.second; ++i) {
         if(GetAsyncKeyState(i->second) & 0x8000) {
-            MoveBackward();
+            MoveDown();
             return;
         }
     }

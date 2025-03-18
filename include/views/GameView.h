@@ -1,11 +1,12 @@
 #pragma once
 
+#include "core/keyboard.h"
 #include "views/view.h"
 #include "objects/block.h"
 #include "objects/food.h"
 #include "objects/snake.h"
 
-class GameView : public View 
+class GameView : public View, public KeyRecognizer 
 {
         public:
             GameView();
@@ -20,6 +21,13 @@ class GameView : public View
         private:
             Size _viewSize;
             Point _viewStartPos;
+
+        // Key handler 
+        protected:
+            virtual void MoveUp() override;
+            virtual void MoveDown() override;
+            virtual void MoveLeft() override;
+            virtual void MoveRight() override;
 
         // Block Object 
         private:

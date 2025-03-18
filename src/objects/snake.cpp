@@ -43,8 +43,10 @@ void Snake::move() {
             this->snake[count-1].GetLastPos()
         );
     }
+
+    this->draw();
 }
 
 void Snake::setDirection(Point const &direction) {
-    this->snake[0] = direction;
+    this->snake[0].SetDirection(direction);
 }

@@ -6,7 +6,7 @@ int main()
     ViewController viewController;
     viewController.load(viewController.GetViewList().GetViewByName("GameView"));
 
-    std::cin.get();
+    while(true){}
     
     return 0;
 }

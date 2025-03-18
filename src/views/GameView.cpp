@@ -1,6 +1,6 @@
 #include "views/gameview.h"
 
-GameView::GameView() {
+GameView::GameView(){
     this->_viewSize = Size(
         Graphics::GetSize() - Size(3, 3)
     );
@@ -61,12 +61,37 @@ void GameView::spawnSnake() {
     this->snake.draw();
 }
 
+void GameView::MoveUp(){
+    this->snake.setDirection(Point(0, -1));
+}
+
+void GameView::MoveDown(){
+    this->snake.setDirection(Point(0, 1));
+}
+
+void GameView::MoveLeft(){
+    this->snake.setDirection(Point(-1, 0));
+}
+
+void GameView::MoveRight(){
+    this->snake.setDirection(Point(1, 0));
+}
+
 void GameView::start() {
     this->addWalls();
     this->spawnFood();
     this->spawnSnake();
+
+    std::thread keyActionThread([this]() {
+        while (true) {
+            this->CheckForAction();
+        }
+    });  
+
+    keyActionThread.detach();
 }
 
 void GameView::update(){
-
+    System::Delay(500);
+    this->snake.move();
 }
