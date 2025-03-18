@@ -92,6 +92,6 @@ void GameView::start() {
 }
 
 void GameView::update(){
-    System::Delay(500);
+    System::Delay(200);
     this->snake.move();
 }
