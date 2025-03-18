@@ -15,8 +15,3 @@ void System::Delay(uint64_t duration)
 {
     Sleep(duration);
 }
-
-void System::WaitForThreads()
-{
-    WaitForMultipleObjects(0, NULL, FALSE, INFINITE);
-}
