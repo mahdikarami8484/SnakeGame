@@ -19,10 +19,12 @@ class Snake : public Object {
         void erase();
 
         void add();
+        void move();
 
+        void setDirection(Point const &direction);
     private: 
         std::vector<Player> snake;
         
-        void move();
+        
 
 };

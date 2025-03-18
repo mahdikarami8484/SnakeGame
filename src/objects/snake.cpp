@@ -22,3 +22,29 @@ void Snake::erase() {
         part.erase();
     }
 }
+
+void Snake::move() {
+    this->erase();
+
+    int count = 0;
+    for(auto& part : this->snake){
+        
+        part.SetLastPos(part.CurrentPoint());
+
+        if(count == 0){
+            part.SetCurrentPoint(
+                part.CurrentPoint() + part.GetDirection()
+            );
+
+            continue;
+        }
+
+        part.SetCurrentPoint(
+            this->snake[count-1].GetLastPos()
+        );
+    }
+}
+
+void Snake::setDirection(Point const &direction) {
+    this->snake[0] = direction;
+}
