@@ -7,7 +7,7 @@ all = main
 BUILD_DIR = build
 OBJ_DIR = $(BUILD_DIR)/obj
 
-main: build snake.o
+main: build gameView.o
 	$(CC) $(CFLAGS) -o $(BUILD_DIR)/snake.exe $(OBJ_DIR)/*.o main.cpp resources/logo.res
 
 build:
@@ -34,10 +34,6 @@ view.o: graphics.o system.o
 viewController.o: system.o view.o
 	$(CC) $(CFLAGS) -o $(OBJ_DIR)/viewController.o -c src/views/viewController.cpp
 
-gameView.o: view.o
-	$(CC) $(CFLAGS) -o $(OBJ_DIR)/gameView.o -c src/views/gameView.cpp
-
-
 object.o: point.o
 	$(CC) $(CFLAGS) -o $(OBJ_DIR)/object.o -c src/objects/object.cpp
 
@@ -48,5 +44,8 @@ block.o: object.o
 	$(CC) $(CFLAGS) -o $(OBJ_DIR)/block.o -c src/objects/block.cpp
 
 
-snake.o: food.o keyboard.o
+snake.o: keyboard.o
 	$(CC) $(CFLAGS) -o $(OBJ_DIR)/snake.o -c src/objects/snake.cpp
+
+gameView.o: view.o viewController.o food.o snake.o block.o
+	$(CC) $(CFLAGS) -o $(OBJ_DIR)/gameView.o -c src/views/gameView.cpp
