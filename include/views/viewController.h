@@ -6,10 +6,13 @@
 class ViewController {
 
     protected:
+    void SetCurrentView(std::shared_ptr<View> view);
+
+    public:
         class ViewList {
             public:
                 void addView(std::string const &name, std::shared_ptr<View> view);
-                void GetViewByName(std::string const &name);
+                std::shared_ptr<View> GetViewByName(std::string const &name) const;
             
             protected:
                 std::vector<std::shared_ptr<View>> views;
@@ -20,14 +23,20 @@ class ViewController {
         ViewController();
 
     public:
-        void load(ViewList view) const;
-        void GetCurrentView() const;
+        void load(std::shared_ptr<View> view);
+        void unLoad();
+
+        std::shared_ptr<View> GetCurrentView() const;
+        bool isViewLoaded() const;
+
         void loadNextView() const;
 
     public:
-        void GetViewList() const;
+        ViewList GetViewList() const;
+
 
     protected:
         ViewList _viewList;
-
+        std::shared_ptr<View> _currentView;
+        bool _viewLoaded;
 };
