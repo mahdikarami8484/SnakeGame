@@ -6,7 +6,7 @@ std::string Food::GetSkin() const
 }
 Graphics::Color Food::GetForeground() const
 {
-    return Graphics::Color::Magenta;
+    return Graphics::Color::BrightMagenta;
 }
 Graphics::Color Food::GetBackground() const
 {
