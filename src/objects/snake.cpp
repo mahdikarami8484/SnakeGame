@@ -1,7 +1,12 @@
 #include "objects/snake.h"
+#include <iostream>
 
 Snake::Snake(Point const &pos, Point const &direction) : Object(pos) {
     this->snake.push_back(Player(pos, direction));
+}
+
+Point Snake::CurrentPoint() const {
+    return this->snake.front().CurrentPoint();
 }
 
 void Snake::add() {
@@ -23,8 +28,9 @@ void Snake::erase() {
 }
 
 void Snake::move() {
-    int count = 0;
     this->erase();
+    
+    int count = 0;
     for(auto& part : this->snake){
         
         part.SetLastPos(part.CurrentPoint());
@@ -33,15 +39,17 @@ void Snake::move() {
             part.SetCurrentPoint(
                 part.CurrentPoint() + part.GetDirection()
             );
-
-            continue;
-        }
-
-        part.SetCurrentPoint(
-            this->snake[count-1].GetLastPos()
-        );
+            
+            
+        }else
+            part.SetCurrentPoint(
+                this->snake[count-1].GetLastPos()
+            );
+        
+        count++;
     }
-    this->SetCurrentPoint(this->snake.front().CurrentPoint());
+
+    //this->SetCurrentPoint(this->snake.front().CurrentPoint());
     this->draw();
 }
 

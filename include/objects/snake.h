@@ -26,6 +26,8 @@ class Snake : public Object {
         size_t GetScore() const;
         void SetScore(size_t value);
 
+        Point CurrentPoint() const;
+
     private: 
         std::vector<Player> snake;
         size_t _score = 0;
