@@ -2,7 +2,7 @@
 
 #include "object.h"
 
-class Block : Object {
+class Block : public Object {
 
     public:
         Block(Point const &pos) : Object(pos) {};
