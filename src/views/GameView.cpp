@@ -107,12 +107,23 @@ void GameView::start() {
     keyActionThread.detach();
 }
 
-void GameView::checkCollisionWithFood(){
+void GameView::checkCollisionWithFood() {
     if(this->snake.CurrentPoint() == this->food.CurrentPoint()) {
         this->snake.add();
         this->snake.SetScore(this->snake.GetScore() + 1);
         this->drawTitle();
         spawnFood();
+    }
+}
+
+void GameView::checkCollisionWithWalls() {
+    if(
+        this->snake.CurrentPoint().GetY() == this->_viewSize.GetHeight() ||
+        this->snake.CurrentPoint().GetX() == this->_viewSize.GetWidth() ||
+        this->snake.CurrentPoint().GetX() == this->_viewStartPos.GetX() ||
+        this->snake.CurrentPoint().GetY() == this->_viewStartPos.GetY()
+    ) {
+        
     }
 }
 
