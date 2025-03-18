@@ -48,3 +48,12 @@ void Snake::move() {
 void Snake::setDirection(Point const &direction) {
     this->snake[0].SetDirection(direction);
 }
+
+size_t Snake::GetScore() const
+{
+    return _score;
+}
+void Snake::SetScore(size_t value)
+{
+    _score = value;
+}

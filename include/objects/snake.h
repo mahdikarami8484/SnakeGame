@@ -22,9 +22,11 @@ class Snake : public Object {
         void move();
 
         void setDirection(Point const &direction);
+
+        size_t GetScore() const;
+        void SetScore(size_t value);
+
     private: 
         std::vector<Player> snake;
-        
-        
-
+        size_t _score = 0;
 };
