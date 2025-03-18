@@ -7,6 +7,8 @@ Object::Object(Point const &pos)
 
 void Object::draw()
 {
+    this->erase();
+
     Graphics::Draw(
         this->GetSkin(),
         Graphics::Property(this->GetForeground()),
