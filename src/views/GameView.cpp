@@ -118,12 +118,12 @@ void GameView::checkCollisionWithFood() {
 
 void GameView::checkCollisionWithWalls() {
     if(
-        this->snake.CurrentPoint().GetY() == this->_viewSize.GetHeight() ||
-        this->snake.CurrentPoint().GetX() == this->_viewSize.GetWidth() ||
-        this->snake.CurrentPoint().GetX() == this->_viewStartPos.GetX() ||
-        this->snake.CurrentPoint().GetY() == this->_viewStartPos.GetY()
+        this->snake.CurrentPoint().GetY() >= this->_viewSize.GetHeight() ||
+        this->snake.CurrentPoint().GetX() >= this->_viewSize.GetWidth() ||
+        this->snake.CurrentPoint().GetX() <= this->_viewStartPos.GetX() ||
+        this->snake.CurrentPoint().GetY() <= this->_viewStartPos.GetY()
     ) {
-        
+        this->pause();
     }
 }
 
@@ -131,4 +131,7 @@ void GameView::update(){
     System::Delay(100);
     this->snake.move();
     checkCollisionWithFood();
+    checkCollisionWithWalls();
 }
+
+void GameView::whenPause() {}

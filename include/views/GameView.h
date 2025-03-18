@@ -16,6 +16,8 @@ class GameView : public View, public KeyRecognizer
             
             void update() override;
 
+            void whenPause() override;
+            
             std::string GetName() const override;
         
         private:

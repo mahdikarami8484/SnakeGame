@@ -13,6 +13,19 @@ class View {
         // Call on every frame
         virtual void update() = 0;
 
+        // Call on loop when game is pasue
+        virtual void whenPause() = 0;
+
     public:
         virtual std::string GetName() const = 0;
+
+    public:
+        bool isRunning();
+    
+    protected:
+        void run();
+        void pause();
+    
+    protected:
+        bool _run = true;
 };

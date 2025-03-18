@@ -45,7 +45,10 @@ void ViewController::load(std::shared_ptr<View> view) {
         this->_viewLoaded = true;
 
         while (this->isViewLoaded()) {
-            this->GetCurrentView()->update();
+            if(this->GetCurrentView()->isRunning())
+                this->GetCurrentView()->update();
+            else
+                this->GetCurrentView()->whenPause();
         }
     });  
     viewThread.detach();
