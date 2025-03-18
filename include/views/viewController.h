@@ -3,7 +3,7 @@
 #include "core/system.h"
 #include "view.h"
 
-class viewController {
+class ViewController {
 
     protected:
         class ViewList {
@@ -17,6 +17,9 @@ class viewController {
         };
 
     public:
+        ViewController();
+
+    public:
         void load(ViewList view) const;
         void GetCurrentView() const;
         void loadNextView() const;
@@ -25,6 +28,6 @@ class viewController {
         void GetViewList() const;
 
     protected:
-        ViewList viewList;
+        ViewList _viewList;
 
 };
