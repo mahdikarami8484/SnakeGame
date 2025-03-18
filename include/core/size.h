@@ -25,6 +25,8 @@ public:
     friend std::ostream& operator<<(std::ostream &output, Size const &size);
     friend bool operator==(Size const& one, Size const& two);
     friend bool operator!=(Size const& one, Size const& two);
+    friend Size operator+(Size const& one, Size const& two);
+    friend Size operator-(Size const& one, Size const& two);
 
 private:
     Dimension _width = 0;
@@ -34,3 +36,5 @@ private:
 std::ostream& operator<<(std::ostream &stream, Size const &size);
 bool operator==(Size const& one, Size const& two);
 bool operator!=(Size const& one, Size const& two);
+friend Size operator+(Size const& one, Size const& two);
+friend Size operator-(Size const& one, Size const& two);
