@@ -11,6 +11,4 @@ class GameView : public View
             void update() override;
 
             std::string GetName() const override;
-
-        
 };
