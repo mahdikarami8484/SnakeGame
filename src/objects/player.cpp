@@ -18,7 +18,7 @@ void Player::SetDirection(Point pos) {
 
 std::string Player::GetSkin() const
 {
-    return "o";
+    return "O";
 }
 Graphics::Color Player::GetForeground() const
 {
