@@ -34,8 +34,26 @@ void GameView::addWalls() {
         this->addWall(Point(this->_viewSize.GetWidth(), i));
 }
 
+void GameView::spawnFood() {
+    this->food.SetCurrentPoint(
+        Point(
+            System::GenerateNumber(
+                this->_viewStartPos.GetX() + 1, 
+                this->_viewSize.GetWidth() - 1
+            ),
+            System::GenerateNumber(
+                this->_viewStartPos.GetY() + 1, 
+                this->_viewSize.GetHeight() - 1
+            )
+        )
+    );
+    
+    this->food.draw();
+}
+
 void GameView::start() {
     this->addWalls();
+    this->spawnFood();
 }
 
 void GameView::update(){
