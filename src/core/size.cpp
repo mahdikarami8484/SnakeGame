@@ -42,3 +42,13 @@ bool operator==(Size const& one, Size const& two) {
 bool operator!=(Size const& one, Size const& two) {
     return !(one == two);
 }
+
+Size operator+(Size const& one, Size const& two)
+{
+    return Size(one.GetWidth() + two.GetWidth(), one.GetHeight() + two.GetHeight());
+}
+
+Size operator-(Size const& one, Size const& two)
+{
+    return Size(one.GetWidth() - two.GetWidth(), one.GetHeight() - two.GetHeight());
+}
