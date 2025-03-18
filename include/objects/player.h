@@ -10,21 +10,18 @@ class Player : public Object {
             this->_direction = direction;
         }; 
 
+        Point GetLastPos() const;
+        void SetLastPos(Point pos);
+
+        Point GetDirection() const;
+        void SetDirection(Point pos);
+
     protected:
         std::string GetSkin() const override;
         Graphics::Color GetForeground() const override;
         Graphics::Color GetBackground() const override;
 
     protected:
-        Point _lastPos = Point();    
-    public:
-        Point GetLastPos() const;
-        void SetLastPos(Point pos);
-
-    protected:
+        Point _lastPos = Point();
         Point _direction = Point();
-    public:
-        Point GetDirection() const;
-        void SetDirection(Point pos);
-
 };
