@@ -36,5 +36,5 @@ private:
 std::ostream& operator<<(std::ostream &stream, Size const &size);
 bool operator==(Size const& one, Size const& two);
 bool operator!=(Size const& one, Size const& two);
-friend Size operator+(Size const& one, Size const& two);
-friend Size operator-(Size const& one, Size const& two);
+Size operator+(Size const& one, Size const& two);
+Size operator-(Size const& one, Size const& two);
