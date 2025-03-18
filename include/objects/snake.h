@@ -4,30 +4,25 @@
 #include "object.h"
 #include <vector>
 
-class Snake : public Object, KeyRecognizer
-{
-public:
-    struct BodyPart {
-        Point pos;
-        Point last_pos;
-        Point direction;
-    };
+class Snake : public Object {
+    public:
+        Snake(Point const &pos) : Object(pos) {}; 
 
-    std::vector<BodyPart> snakeBody;
+    protected:
+        std::string GetSkin() const override;
+        Graphics::Color GetForeground() const override;
+        Graphics::Color GetBackground() const override;
 
-    Snake(
-        Point pos,
-        Point direction
-    );
-        
-    ~Snake();
+    protected:
+        Point _lastPos;    
+    public:
+        Point GetLastPos() const;
+        void SetLastPos(Point pos);
 
-    void draw() override;
-    void erase() override;
-    void move() override;
+    protected:
+        Point _direction;
+    public:
+        Point GetDirection() const;
+        void SetDirection(Point pos);
 
-protected:
-    std::string GetSkin() const override;
-    Graphics::Color GetForeground() const override;
-    Graphics::Color GetBackground() const override;
 };
