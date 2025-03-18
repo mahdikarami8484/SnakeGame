@@ -1,7 +1,7 @@
 #pragma once
 
-#include "graphics.h"
-#include "system.h"
+#include "core/graphics.h"
+#include "core/system.h"
 
 class View {
     public:
