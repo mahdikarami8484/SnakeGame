@@ -51,9 +51,20 @@ void GameView::spawnFood() {
     this->food.draw();
 }
 
+void GameView::spawnSnake() {
+    this->snake = Snake(
+        Point(
+            this->_viewSize.GetWidth() / 2,
+            this->_viewSize.GetHeight() / 2
+        ), 
+        Point(1, 0));
+    this->snake.draw();
+}
+
 void GameView::start() {
     this->addWalls();
     this->spawnFood();
+    this->spawnSnake();
 }
 
 void GameView::update(){

@@ -1,53 +1,24 @@
 #include "objects/snake.h"
 
-// void Snake::move()
-// {
-//     this->erase();
-    
-//     int counter = 0;
-//     for(auto& part : this->snakeBody)
-//     {
-//         part.last_pos = part.pos;
-
-//         if(counter)
-//         {
-//             part.pos = this->snakeBody[counter-1].last_pos;  
-//             continue;
-//         }
-
-//         part.pos += part.direction;
-//         counter++;
-//     }
-
-//     this->draw();
-// }
-
-Point Snake::GetLastPos() const {
-    return this->_lastPos;
+Snake::Snake(Point const &pos, Point const &direction) : Object(pos) {
+    this->snake.push_back(Player(pos, direction));
 }
 
-void Snake::SetLastPos(Point pos) {
-    this->_lastPos = pos;
+void Snake::add() {
+    this->snake.push_back(
+        Player(this->snake.back().GetLastPos())
+    );
 }
 
-Point Snake::GetDirection() const {
-    return this->_direction;
+void Snake::draw() {
+    for(auto& part : this->snake) {
+        part.erase();
+        part.draw();
+    }
 }
 
-void Snake::SetDirection(Point pos) {
-    this->_direction = pos;
-}
-
-std::string Snake::GetSkin() const
-{
-    return "o";
-}
-Graphics::Color Snake::GetForeground() const
-{
-    return Graphics::Color::BrightGreen;
-}
-
-Graphics::Color Snake::GetBackground() const
-{
-    return Graphics::Color::Black;
+void Snake::erase() {
+    for(auto& part : this->snake) {
+        part.erase();
+    }
 }

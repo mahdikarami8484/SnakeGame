@@ -43,8 +43,10 @@ food.o: object.o
 block.o: object.o
 	$(CC) $(CFLAGS) -o $(OBJ_DIR)/block.o -c src/objects/block.cpp
 
+player.o:
+	$(CC) $(CFLAGS) -o $(OBJ_DIR)/player.o -c src/objects/player.cpp
 
-snake.o: keyboard.o
+snake.o: player.o keyboard.o
 	$(CC) $(CFLAGS) -o $(OBJ_DIR)/snake.o -c src/objects/snake.cpp
 
 gameView.o: view.o viewController.o food.o snake.o block.o

@@ -3,6 +3,7 @@
 #include "views/view.h"
 #include "objects/block.h"
 #include "objects/food.h"
+#include "objects/snake.h"
 
 class GameView : public View 
 {
@@ -17,14 +18,26 @@ class GameView : public View
             std::string GetName() const override;
         
         private:
-            std::vector<Block> blocks;
             Size _viewSize;
             Point _viewStartPos;
 
-            Food food;
-
+        // Block Object 
+        private:
+            std::vector<Block> blocks;           
         private: 
             void addWalls();
             void addWall(Point pos);
+            
+        // Food Object
+        private:
+            Food food;
+        private:
             void spawnFood();
+
+        // Snake Object
+        private:
+            Snake snake;
+        private:
+            void spawnSnake();
+
 };
