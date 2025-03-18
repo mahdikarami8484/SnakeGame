@@ -112,7 +112,6 @@ void GameView::update(){
     this->snake.move();
     if(this->snake.CurrentPoint() == this->food.CurrentPoint()) {
         this->snake.SetScore(this->snake.GetScore() + 1);
-        this->snake.add();
         this->drawTitle();
         spawnFood();
     }
