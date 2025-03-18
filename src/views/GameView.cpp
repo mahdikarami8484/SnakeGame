@@ -94,4 +94,7 @@ void GameView::start() {
 void GameView::update(){
     System::Delay(200);
     this->snake.move();
+    if(this->snake.CurrentPoint() == this->food.CurrentPoint()) {
+        spawnFood();
+    }
 }
