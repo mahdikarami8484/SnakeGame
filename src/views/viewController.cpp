@@ -48,8 +48,8 @@ void ViewController::load(std::shared_ptr<View> view) {
             this->GetCurrentView()->update();
         }
     });  
-
     viewThread.detach();
+    System::WaitForThreads();
 }
 
 void ViewController::unLoad() {

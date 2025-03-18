@@ -5,8 +5,6 @@ int main()
 {
     ViewController viewController;
     viewController.load(viewController.GetViewList().GetViewByName("GameView"));
-
-    while(true){}
     
     return 0;
 }
