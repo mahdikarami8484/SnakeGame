@@ -23,9 +23,8 @@ void Snake::erase() {
 }
 
 void Snake::move() {
-    this->erase();
-
     int count = 0;
+    this->erase();
     for(auto& part : this->snake){
         
         part.SetLastPos(part.CurrentPoint());
@@ -42,7 +41,7 @@ void Snake::move() {
             this->snake[count-1].GetLastPos()
         );
     }
-
+    this->SetCurrentPoint(this->snake.front().CurrentPoint());
     this->draw();
 }
 
