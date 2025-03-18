@@ -9,7 +9,6 @@ class Block : Object {
 
         virtual void draw() override;
         virtual void erase() override;
-        virtual void move() override;
 
     protected:
         virtual std::string GetSkin() const override;

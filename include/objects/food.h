@@ -11,8 +11,6 @@ public:
     
     void erase() override;
 
-    void move() override {};
-
 protected:
     virtual std::string GetSkin() const override;
     virtual Graphics::Color GetForeground() const override;

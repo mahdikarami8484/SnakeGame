@@ -10,7 +10,6 @@ public:
     Object(Point const &pos);
 
     virtual void draw() = 0;
-    virtual void move() = 0;
     virtual void erase() = 0;
 
     Point CurrentPoint() const;
