@@ -48,4 +48,7 @@ class GameView : public View, public KeyRecognizer
         private:
             void spawnSnake();
 
+        private:
+            void drawTitle();
+
 };

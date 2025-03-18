@@ -1,4 +1,5 @@
 #include "views/gameview.h"
+#include <sstream>
 
 GameView::GameView(){
     this->_viewSize = Size(
@@ -61,7 +62,21 @@ void GameView::spawnSnake() {
     this->snake.draw();
 }
 
-void GameView::MoveUp(){
+void GameView::drawTitle()
+{
+    std::stringstream stream;
+    stream << "Score: " << this->snake.GetScore();
+
+    Size size = Graphics::GetSize();
+    size_t center = size.GetWidth() / 2;
+    Graphics::Draw(
+        stream.str(),
+        Graphics::Property(Graphics::Color::Red, Graphics::Color::Cyan),
+        Point(center - stream.str().size() / 2, 1)
+    );
+}
+void GameView::MoveUp()
+{
     this->snake.setDirection(Point(0, -1));
 }
 
@@ -80,6 +95,7 @@ void GameView::MoveRight(){
 void GameView::start() {
     this->addWalls();
     this->spawnFood();
+    this->drawTitle();
     this->spawnSnake();
 
     std::thread keyActionThread([this]() {
@@ -95,6 +111,8 @@ void GameView::update(){
     System::Delay(200);
     this->snake.move();
     if(this->snake.CurrentPoint() == this->food.CurrentPoint()) {
+        this->snake.SetScore(this->snake.GetScore() + 1);
+        this->drawTitle();
         spawnFood();
     }
 }
