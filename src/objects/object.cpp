@@ -5,6 +5,24 @@ Object::Object(Point const &pos)
     this->SetCurrentPoint(pos);
 }
 
+void Object::draw()
+{
+    Graphics::Draw(
+        this->GetSkin(),
+        Graphics::Property(this->GetForeground()),
+        this->CurrentPoint()
+    );
+}
+
+void Object::erase()
+{
+    Graphics::Draw(
+        this->GetSpaces(),
+        Graphics::Property(),
+        this->CurrentPoint()
+    );
+}
+
 Point Object::CurrentPoint() const {
     return _current;
 }

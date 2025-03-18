@@ -5,10 +5,7 @@
 class Block : Object {
 
     public:
-        Block(Point pos);
-
-        virtual void draw() override;
-        virtual void erase() override;
+        Block(Point const &pos) : Object(pos) {};
 
     protected:
         virtual std::string GetSkin() const override;
