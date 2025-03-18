@@ -1,13 +1,18 @@
 #pragma once
 
-class View 
-{
-public:
-    virtual ~View() {}
+#include "graphics.h"
+#include "system.h"
 
-    // Call during runtime
-    virtual void start() = 0;
+class View {
+    public:
+        virtual ~View() {}
 
-    // Call on every frame
-    virtual void update() = 0;
+        // Call during runtime
+        virtual void start() = 0;
+
+        // Call on every frame
+        virtual void update() = 0;
+
+    public:
+        virtual std::string GetName() const = 0;
 };
