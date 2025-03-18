@@ -107,13 +107,17 @@ void GameView::start() {
     keyActionThread.detach();
 }
 
-void GameView::update(){
-    System::Delay(100);
-    this->snake.move();
+void GameView::checkCollisionWithFood(){
     if(this->snake.CurrentPoint() == this->food.CurrentPoint()) {
         this->snake.add();
         this->snake.SetScore(this->snake.GetScore() + 1);
         this->drawTitle();
         spawnFood();
     }
+}
+
+void GameView::update(){
+    System::Delay(100);
+    this->snake.move();
+    checkCollisionWithFood();
 }

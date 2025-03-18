@@ -41,6 +41,7 @@ class GameView : public View, public KeyRecognizer
             Food food;
         private:
             void spawnFood();
+            void checkCollisionWithFood();
 
         // Snake Object
         private:
