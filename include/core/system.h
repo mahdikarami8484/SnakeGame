@@ -2,6 +2,9 @@
 
 #include <iostream>
 #include <map>
+#include <vector>
+#include <unordered_map>
+#include <memory>
 #include <cstdint>
 
 namespace System {
