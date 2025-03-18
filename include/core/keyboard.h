@@ -10,15 +10,15 @@ public:
 protected:
     virtual void MoveLeft() = 0;
     virtual void MoveRight() = 0;
-    virtual void MoveFoward() = 0;
-    virtual void MoveBackward() = 0;
+    virtual void MoveUp() = 0;
+    virtual void MoveDown() = 0;
 
 private:
     enum class Action {
         MoveLeft,
         MoveRight,
-        MoveFoward,
-        MoveBackward
+        MoveUp,
+        MoveDown
     };
     std::multimap<Action, short> _controls;
 };
