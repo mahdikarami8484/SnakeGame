@@ -77,6 +77,8 @@ void Graphics::Draw(std::string const &text, Property const &property) {
     cout << text;
 
     SetProperty(Property());
+
+    Graphics::MoveCursor(Point());
 }
 
 void Graphics::Draw(std::string const &text, Property const &property, Point const &point)
