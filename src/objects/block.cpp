@@ -3,6 +3,8 @@
 Block::Block(Point pos) : Object(pos) {}
 
 void Block::draw(){
+    this->erase();
+    
     Graphics::Draw(
         this->GetSkin(),
         Graphics::Property(this->GetForeground()),
