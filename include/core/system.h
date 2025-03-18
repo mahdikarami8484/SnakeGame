@@ -5,6 +5,7 @@
 #include <vector>
 #include <unordered_map>
 #include <memory>
+#include <thread>
 #include <cstdint>
 
 namespace System {
