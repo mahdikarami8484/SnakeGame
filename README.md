@@ -70,9 +70,7 @@ make --version
 make
 ```
 
-## How to Execute
-
-Enter the `build` folder after building the project and run `snake.exe`.
+8. Enter the `build` folder after building the project and run `snake.exe`.
 
 **This application is currenly compatible with Windows. Make sure you run this program through Command Prompt.**
 
